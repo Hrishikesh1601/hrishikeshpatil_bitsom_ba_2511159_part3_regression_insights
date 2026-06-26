@@ -1,21 +1,22 @@
-# hrishikeshpatil_bitsom_ba_2511159_part3_regression_insights
+hrishikeshpatil_2511159_part3_regression_insights
 
 Part 3: Regression-Based Business Insights & Model Interpretation
 
 Business Problem Summary
 
-In this project, I analyzed a retail store dataset to understand which business factors are associated with monthly sales. The main objective was to identify whether variables such as marketing spend, customer footfall, inventory availability, discounts, customer ratings, and store characteristics have an impact on sales performance.
+In this project, I analyzed a retail store dataset to understand which business factors are associated with monthly sales. The aim was to identify how variables like marketing spend, customer footfall, discounts, staff count, inventory availability, region, and store type are related to sales performance.
 
-The results of this analysis can help the management team make better business decisions related to marketing, inventory planning, staffing, and overall store performance.
+The findings from this analysis can help management make better decisions regarding marketing, inventory planning, staffing, and overall store operations.
+
 
 
 Dataset Description
 
-The dataset contains monthly business information collected from different retail stores. Each row represents the performance of one store during a particular month.
+The dataset contains monthly business information for different retail stores. Each record represents the performance of one store for a particular month.
 
-The dataset includes information such as marketing spend, customer footfall, average discount offered, staff count, inventory availability, customer ratings, store type, region, monthly sales, and monthly profit.
+The dataset includes details such as marketing spend, customer footfall, average discount percentage, staff count, inventory availability, region, store type, monthly sales and monthly profit.
 
-For this analysis, monthly_sales is used as the target variable because the objective is to understand which factors influence sales.
+For this project, monthly_sales was selected as the dependent variable because the main objective was to understand the factors associated with sales performance.
 
 
 
@@ -23,32 +24,27 @@ Dependent Variable
 
 monthly_sales
 
-Monthly sales is the dependent variable because it is the value that the regression models are trying to predict.
+Monthly sales is the target variable that all regression models are trying to predict.
 
 
 
 Independent Variables
 
-The following variables were selected as independent variables:
+The following variables were used in the final regression model:
 
 - marketing_spend
 - footfall
 - avg_discount_pct
 - staff_count
 - inventory_availability_pct
-- competitor_distance_km
-- holiday_flag
-- customer_rating
-- region
-- store_type
-
-These variables were chosen because they are likely to influence monthly sales.
+- region (converted into dummy variables)
+- store_type (converted into dummy variables)
 
 
 
 Numerical Variables
 
-The numerical variables available in the dataset are:
+The dataset contains several numerical variables, including:
 
 - marketing_spend
 - footfall
@@ -60,7 +56,7 @@ The numerical variables available in the dataset are:
 - monthly_sales
 - monthly_profit
 
-These variables contain numeric values and can be used directly in regression analysis.
+Only the variables required for the final regression model were used in the analysis.
 
 
 
@@ -71,69 +67,69 @@ The dataset contains two categorical variables:
 - region
 - store_type
 
-Since regression analysis cannot work directly with text values, these variables will be converted into dummy variables before building the multiple regression model.
+Since regression analysis requires numerical inputs, these variables were converted into dummy variables before building the multiple regression model.
 
 
 
 Variables Not Used
 
-Two variables were excluded from the regression analysis.
+Some variables were not included in the final regression model.
 
-store_id was not used because it is only a unique identifier for each store and does not provide any useful information for predicting sales.
-
-monthly_profit was also excluded because profit is another business outcome that is closely related to sales. Including it as an independent variable could lead to misleading results.
+- store_id was excluded because it is only a unique identifier.
+- monthly_profit was excluded because it is another business outcome and could lead to data leakage.
+- customer_rating was excluded because it contained missing values.
+- competitor_distance_km and holiday_flag were not included in the final model selected for this analysis.
 
 
 
 Data Preparation
 
-Before starting the regression analysis, the dataset was checked to ensure that it was suitable for analysis.
+Before performing the regression analysis, I prepared the dataset by following these steps:
 
-The following steps were performed:
-
-- Verified that numerical columns were stored as numbers.
-- Checked categorical variables for consistent values.
+- Verified that numerical columns contained numeric values.
+- Checked categorical variables for consistency.
 - Reviewed the dataset for duplicate records.
 - Checked for missing values.
-- Kept the original dataset unchanged and prepared a separate cleaned version for analysis.
-
-These steps helped improve the quality of the data before building the regression models.
+- Kept the original dataset unchanged.
+- Created a separate cleaned dataset for regression analysis.
+- Converted categorical variables into dummy variables.
 
 
 
 Regression Approach
 
-The regression analysis was carried out in three stages.
+The analysis was completed in three stages.
 
-First, simple linear regression models were created to study the relationship between monthly sales and one independent variable at a time.
+First, I created simple regression models to understand the relationship between monthly sales and one independent variable at a time.
 
-Next, a multiple linear regression model was developed using several numerical variables together.
+Next, I built a multiple regression model using several numerical variables together.
 
-Finally, dummy variables were added for the categorical variables so that they could also be included in the final regression model.
-
-The dependent variable used in all models is monthly_sales.
-
+Finally, I added dummy variables for region and store_type to include categorical information in the final model.
 
 
 Dummy Variable Approach
 
-The variables region and store_type contain text values, so they were converted into dummy variables.
+The variables region and store_type were converted into dummy variables before running the regression analysis.
 
-One category from each variable was kept as the reference category. This approach helps avoid multicollinearity and ensures that the regression model produces reliable coefficient estimates.
+For the region variable, East was used as the reference category, while dummy variables were created for North, South, and West.
+
+Similarly, one category from store_type was used as the reference category, and dummy variables were created for the remaining store types.
+
+Using a reference category helps avoid multicollinearity and makes the regression results easier to interpret.
 
 
 
 Business Objective
 
-The purpose of this analysis is to answer a few important business questions, such as:
+The purpose of this analysis was to answer questions such as:
 
-- Does increasing marketing spend improve monthly sales?
-- Is customer footfall strongly related to sales performance?
-- Does better inventory availability help increase sales?
-- Do customer ratings influence monthly sales?
-- Are certain store types or regions performing better than others?
+- Does higher marketing spend relate to higher monthly sales?
+- Does customer footfall have an impact on sales?
+- Does inventory availability improve sales performance?
+- How do discounts affect monthly sales?
+- Do different regions and store types perform differently?
 
-The answers to these questions will help management make more informed business decisions.
+The answers to these questions can help management make better business decisions based on data.
 
 
 
@@ -141,15 +137,15 @@ Assumptions and Limitations
 
 This analysis is based only on the variables available in the provided dataset.
 
-Regression analysis helps identify relationships between variables, but it does not prove that one variable directly causes changes in another.
+Regression analysis helps identify relationships between variables, but it does not prove that one variable directly causes another.
 
-Other factors, such as economic conditions, customer preferences, local competition, or seasonal trends, may also affect monthly sales but are not included in this dataset.
+Other factors such as customer behaviour, seasonal demand, weather, local competition, festivals and economic conditions may also affect monthly sales but were not included in this dataset.
 
 
 
 Repository Contents
 
-This repository includes the following files:
+This repository contains:
 
 - Dataset
 - Regression Workbook
@@ -157,7 +153,7 @@ This repository includes the following files:
 - Residual Analysis
 - Regression Summary
 - Model Equations
-- Final Recommendation
+- Final Business Recommendation
 - Required Screenshots
 - README Documentation
 
@@ -165,4 +161,6 @@ This repository includes the following files:
 
 Conclusion
 
-This project uses regression analysis to study the factors that are associated with monthly sales in retail stores. The findings provide useful insights into which business variables have the strongest relationship with sales performance. These insights can support management in making data-driven decisions while also considering the limitations of statistical analysis.
+This project helped me understand how regression analysis can be used to identify the business factors associated with monthly sales. After comparing different models, I selected the multiple regression model because it explained the data better and provided more meaningful business insights.
+
+Although no regression model can perfectly predict future sales, the results of this analysis can support management in making better business decisions based on available data.
